@@ -1,3 +1,7 @@
+--Crea una view que trae 2 filas para todos los partidos de todos los torneos. 
+--En cada fila esta uno de los dos equipos (Local o Visitante) diferenciados por PAPU_LOCAL_VISITANTE.
+--Esto cuenta la cantidad de goles a favor, en contra, la diferencia y los puntos que recibe ese equipo por ese partido
+
 CREATE VIEW PARTIDO_PUNTOS (PAPU_TORNEO, PAPU_PARTIDO, PAPU_EQUIPO, PAPU_LOCAL_VISITANTE, PAPU_GOL_FAVOR, PAPU_GOL_CONTRA, PAPU_DIFERENCIA_GOLES, PAPU_PUNTOS) AS
 (SELECT PART_TORNEO, PART_CODIGO, PART_VISITANTE, 'V', COUNT(DISTINCT V.DEPA_CODIGO), COUNT(DISTINCT L.DEPA_CODIGO),  COUNT(DISTINCT V.DEPA_CODIGO) - COUNT(DISTINCT L.DEPA_CODIGO),
 		(CASE  WHEN PART_DURACION IS NULL THEN NULL
